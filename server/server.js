@@ -6,6 +6,7 @@ var logger = require('./util/logger');
 var auth = require('./auth/routes');
 // db.url is different depending on NODE_ENV
 require('mongoose').connect(config.db.url);
+console.log(config.db.url);
 
 if (config.seed) {
   require('./util/seed');

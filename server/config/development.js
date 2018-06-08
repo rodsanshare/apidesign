@@ -1,8 +1,10 @@
+require('dotenv/config');
+
 module.exports = {
   // enabled logging for development
   logging: true,
   seed: true,
   db: {
-    url: 'mongodb://localhost/nodeblog'
+    url: process.env.db
   }
 };
