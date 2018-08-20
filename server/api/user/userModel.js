@@ -16,7 +16,7 @@ var UserSchema = new Schema({
   }
 });
 
-UserSchema.pre('save', function(next) {
+UserSchema.pre('save', function (next) {
   if (!this.isModified('password')) return next();
 
 
@@ -26,11 +26,11 @@ UserSchema.pre('save', function(next) {
 
 UserSchema.methods = {
   // check the passwords on signin
-  authenticate: function(plainTextPword) {
+  authenticate: function (plainTextPword) {
     return bcrypt.compareSync(plainTextPword, this.password);
   },
   // hash the passwords
-  encryptPassword: function(plainTextPword) {
+  encryptPassword: function (plainTextPword) {
     if (!plainTextPword) {
       return ''
     } else {
@@ -39,7 +39,7 @@ UserSchema.methods = {
     }
   },
 
-  toJson: function() {
+  toJson: function () {
     var obj = this.toObject()
     delete obj.password;
     return obj;
